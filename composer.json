@@ -1,5 +1,5 @@
 {
-    "name": "Virmyt/SymfonyUserRefererBundle",
+    "name": "virmyt/symfony-user-referer-bundle",
     "description": "Symfony 2 User referer bundle",
     "keywords": ["referer", "referal"],
     "type": "symfony-bundle",
