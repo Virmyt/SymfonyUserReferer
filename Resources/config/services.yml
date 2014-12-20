@@ -1,0 +1,10 @@
+services:
+  referer.listener.request:
+    class: Virmyt\UserRefererBundle\Listeners\RequestListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+  referer.listener.registration:
+    class: Virmyt\UserRefererBundle\Listeners\SaveReferrerListener
+    arguments: [ @session]
+    tags:
+      - { name: doctrine.event_listener, event: prePersist }

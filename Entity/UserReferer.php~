@@ -1,0 +1,59 @@
+<?php
+namespace Virmyt\UserRefererBundle\Entity;
+
+use Application\Sonata\UserBundle\Entity\User;
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="users_referral")
+ *
+ */
+class UserReferer
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    public function __construct($ref, $referer, $ip)
+    {
+        $this->ref = $ref;
+        $this->referer = $referer;
+        $this->ip = $ip;
+
+    }
+    /**
+     * @ORM\Column(type="string", length=15)
+     * @Assert\Ip
+     */
+    private $ip;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $referer;
+
+    /**
+     * @ORM\Column(type="string", length=16)
+     */
+    private $ref;
+
+    /**
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="change", field="status", value="effective")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Virmyt\UserRefererBundle\Model\ReferrerInterface", cascade="persist")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
+}
