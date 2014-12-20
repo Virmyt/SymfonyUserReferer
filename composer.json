@@ -1,0 +1,23 @@
+{
+    "name": "Virmyt/SymfonyUserRefererBundle",
+    "description": "Symfony 2 User referer bundle",
+    "keywords": ["referer", "referal"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "Artem Pozharskyi",
+            "homepage": "https://github.com/Virmyt",
+            "email":    "pozharskiy.a@gmail.com"
+        }
+    ],
+    "require": {
+        "php":             ">=5.3.0",
+        "symfony/symfony": ">=2.0",
+        "doctrine/orm":    ">=2.2"
+    },
+    "autoload": {
+        "psr-0": { "Virmyt\\UserRefererBundle": "" }
+    },
+    "target-dir": "Virmyt/UserRefererBundle"
+}
