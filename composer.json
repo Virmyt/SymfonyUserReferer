@@ -4,6 +4,7 @@
     "keywords": ["referer", "referal"],
     "type": "symfony-bundle",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name":     "Artem Pozharskyi",
