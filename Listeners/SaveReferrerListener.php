@@ -2,7 +2,6 @@
 
 namespace Virmyt\UserRefererBundle\Listeners;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Virmyt\UserRefererBundle\Entity\UserReferer;
@@ -22,7 +21,8 @@ class SaveReferrerListener
     public function prePersist(LifecycleEventArgs $lifecycleEventArgs)
     {
         if (($user = $lifecycleEventArgs->getEntity()) instanceof ReferrerInterface) {
-            $referral = $this->session->getIterator()->offsetExists('referral') ? $this->session->getIterator()->offsetGet('referral') : null;
+            $sessionIterator = $this->session->getIterator();
+            $referral = $sessionIterator->offsetExists('referral') ? $sessionIterator->offsetGet('referral') : null;
             if( $referral instanceof UserReferer ) {
                 $referral->setUser($user);
                 $lifecycleEventArgs->getEntityManager()->merge($referral);
